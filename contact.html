@@ -1,56 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contact</title>
-        <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt | Magjia e Momentit</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-    <form method="post" action="">
-        <h1>Na Kontaktoni:</h1>
-        <body>
-            <div>
-            <label for="First Name">First Name*:  </label> <br>
-            <input type="text" id="FirstName" required placeholder="Enter First Name">
-        </div>
-         <div>
-            <label for="Last Name">Last Name*: </label> <br>
-            <input type="text" id="LastName" required placeholder="Enter Last Name">
-        </div>
-        <div>
-            <label for="email">Email*</label> <br>
-            <input type="email" id="email" placeholder="Enter Email Address">
-        </div>
-        
-        <div>
-            <label>Preferencat</label> <br>
-            <label for="Llokume">Llokume</label>
-            <input type="checkbox" id="Llokume" value="Llokume">
-            <label for="Cokollata">Cokollata</label>
-            <input type="checkbox" id="Cokollata" value="Cokollata">
-            <label for="Konfeta">Konfeta</label>
-            <input type="checkbox" id="Konfeta" value="Konfeta">
-            <label for="Kavanoz">Kavanoz</label>
-            <input type="checkbox" id="Kavanoz" value="Kavanoz">
-        </div>
-        <div>
-            <label for="Select">Vendndodhja</Select></label> <br>
-            <select id="Select">
-                <option value="wd">Tirane</option>
-                <option value="w1">Rrethe</option>
-            </select>
-        </div>
-         <div>
-            <label for="Select">Upload Profile Picture </Select></label> <br>
-            <select id="Select">
-              <img src="Choose file" alt="choosefile">
-            </select>
-        </div>
-        <button type="submit">submit</button>
-     
-        
-    </form>
+<body>
 
+  <header>
+    <h1 class="logo">Magjia e Momentit</h1>
+    <nav>
+      <a href="index.html">Kryesore</a>
+      <a href="about.html">Rreth Nesh</a>
+      <a href="contact.html" class="active">Kontakt</a>
+    </nav>
+  </header>
+  <section class="contact">
+    <h2>Na Kontaktoni</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Emri juaj">
+      <input type="email" id="email" placeholder="Email-i juaj">
+      <textarea id="message" placeholder="Mesazhi juaj..." rows="5"></textarea>
+      <button type="submit" class="btn">Dërgo Mesazhin</button>
+    </form>
+  </section>
+  <!-- Popup mesazhi -->
+  <div id="popupMessage" class="popup-message">
+
+  </div>
+  <section class="map">
+    <h3>Na gjeni këtu</h3>
+    <iframe src="https://www.google.com/maps?q=Tirana,Albania&output=embed" width="100%" height="300" style="border:0;"
+      allowfullscreen="" loading="lazy"></iframe>
+    <div class="footer-contact">
+      <p><b>Email:</b> magjiaemomentit@gmail.com</p>
+      <p><b>Tel:</b> +355 69 9745 237</p>
+      <p><b>Adresa:</b> Tiranë, Shqipëri</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
+            alt="Instagram"></a>
+        <a href="https://www.facebook.com/"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+            alt="Facebook"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Magjia e Momentit</p>
+  </footer>
+
+  <!-- <script src="js/script.js"></script> -->
+  <script>
+    const contactForm = document.getElementById("contactForm");
+    const popupMessage = document.getElementById("popupMessage");
+
+    if (contactForm) {
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+        if (name === "" || email === "" || message === "") {
+          popupMessage.textContent = "Ju lutem plotësoni të gjitha fushat!";
+          popupMessage.style.backgroundColor = "#e74c3c";
+          popupMessage.classList.add("show");
+        } else {
+          popupMessage.textContent = "Mesazhi juaj u dërgua me sukses! Faleminderit.";
+          popupMessage.style.backgroundColor = "#4CAF50";
+          popupMessage.classList.add("show");
+
+          contactForm.reset();
+        }
+        setTimeout(() => {
+          popupMessage.classList.remove("show");
+        }, 3500);
+      });
+    }
+  </script>
 </body>
+
 </html>
